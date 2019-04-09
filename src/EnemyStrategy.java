@@ -5,9 +5,11 @@ public interface EnemyStrategy {
 	
 	public void buyCatapult(int soldiersLost, Tower enemyTower);
 	
-	public  void defenseFormation();
+	public void normalFormation(Lineup enemyLineup);
 	
-	public abstract void attackFormation();
+	public  void defenseFormation(Lineup enemyLineup);
+	
+	public abstract void attackFormation(Lineup enemyLineup);
 	
 	public void executeStrategy(int towerLife, Lineup enemyLineup,
 		                        int soldiersLost, Tower enemyTower);

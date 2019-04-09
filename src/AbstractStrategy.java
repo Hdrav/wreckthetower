@@ -1,4 +1,4 @@
-
+import java.util.Random;
 
 public abstract class AbstractStrategy implements EnemyStrategy {
 
@@ -21,20 +21,28 @@ public abstract class AbstractStrategy implements EnemyStrategy {
 			}
 		}
 		
-		public abstract void defenseFormation();
+		public void normalFormation(Lineup enemyLineup) {
+			
+			int unitId;
+			Random randomGenerator = new Random();
+			unitId=randomGenerator.nextInt(enemyLineup.getUnlocked);
+			enemyLineup.placeUnit();
 		
-		public abstract void attackFormation();
+		}
+		
+		public abstract void defenseFormation(Lineup enemyLineup);
+		
+		public abstract void attackFormation(Lineup enemyLineup);
+		
 		
 		public void executeStrategy(int towerLife, Lineup enemyLineup,
 								    int soldiersLost, Tower enemyTower) {
 			
 			this.callForBackup(towerLife, enemyLineup);
 			this.buyCatapult(soldiersLost, enemyTower);
-			if(enemyTower.isArmed==true) {
-				this.attackFormation();
-			}	
-			else 
-				defenseFormation();
+			this.normalFormation(enemyLineup);
+				attackFormation(enemyLineup);
+				defenseFormation(enemyLineup);
 		}
 			
 		
