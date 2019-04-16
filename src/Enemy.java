@@ -6,14 +6,14 @@ public class Enemy extends User {
 	private int spent;
 	private final EnemyStrategy currentStrategy;
 	private final Tower enemyTower;
-	private final lineUp enemyLineup;
+	private final Lineup enemyLineup;
 	
 	public Enemy (int money) {
 		super(money);
 	}
 	
 	
-	public void setBattleStrategy (EnemyStrategy currentStrategy) {
+	public void setBattleStrategy (EnemyStrategy currentStrategy) { 
 		this.currentStrategy=currentStrategy;
 	}
 	
@@ -47,7 +47,8 @@ public class Enemy extends User {
 	public void battleStrategy() {
 		
 		if(this.currentStrategy!=null) {
-			currentStrategy.executeStrategy();
+			currentStrategy.executeStrategy(this.enemyLineup);
+			
 		}
 	}
 }

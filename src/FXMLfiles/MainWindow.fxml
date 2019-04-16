@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="475.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutY="533.0" prefHeight="220.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox prefHeight="220.0" prefWidth="151.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <fx:define>
+   					 <Image fx:id="unit01" url="@../resources/unit01.jpg" />
+				  </fx:define>
+                  <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
+                    <graphic>
+  					 <ImageView image="$unit01" FitHeight="150" FitWidth="150">
+  					 </ImageView>
+  					</graphic> 
+  				   </Button>
+  				    <fx:define>
+   					 <Image fx:id="cunit01" url="@../resources/costounita01.png" />
+				  </fx:define>
+                  <ImageView image="$cunit01" fitHeight="80.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox layoutX="210.0" prefHeight="220.0" prefWidth="150.0">
+               <children>
+               	  <fx:define>
+   				 	<Image fx:id="unit02" url="@../resources/unit02.jpg" />
+				  </fx:define>
+                  <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
+                     <graphic>
+  					    <ImageView image="$unit02" FitHeight="150" FitWidth="150">
+  					    </ImageView>
+  					</graphic> 
+  				   </Button>
+  				    <fx:define>
+   					 <Image fx:id="cunit02" url="@../resources/costounita02.png" />
+				  </fx:define>
+                  <ImageView image="$cunit02" fitHeight="81.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox layoutX="427.0" prefHeight="228.0" prefWidth="138.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="427.0" AnchorPane.topAnchor="0.0">
+               <children>
+               	 <fx:define>
+   				  <Image fx:id="unit03" url="@../resources/unit03.jpg" />
+				 </fx:define>
+                  <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
+                   <graphic>
+  					<ImageView image="$unit03" FitHeight="150" FitWidth="150">
+  					 </ImageView>
+  					</graphic> 
+  				   </Button>
+  				   <fx:define>
+   					 <Image fx:id="cunit03" url="@../resources/costounita03.png" />
+				  </fx:define>
+                  <ImageView image="$cunit03" fitHeight="79.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox layoutX="640.0" layoutY="2.0" prefHeight="228.0" prefWidth="138.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
+                     <graphic>
+                        <ImageView FitHeight="150" FitWidth="150" />
+                     </graphic>
+                  </Button>
+                  <ImageView  fitHeight="79.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox layoutX="909.0" layoutY="1.0" prefHeight="190.0" prefWidth="174.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.topAnchor="1.0">
+               <children>
+               <fx:define>
+   				  <Image fx:id="gold" url="@../resources/oro.jpg" />
+				 </fx:define>
+				<ImageView image="$gold" fitHeight="151.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

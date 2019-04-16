@@ -43,6 +43,7 @@ public abstract class AbstractStrategy implements EnemyStrategy {
 			this.normalFormation(enemyLineup);
 				attackFormation(enemyLineup);
 				defenseFormation(enemyLineup);
+			
 		}
 			
 		
