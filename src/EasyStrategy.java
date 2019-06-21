@@ -41,10 +41,10 @@ public class EasyStrategy extends AbstractStrategy {
 		}
 	}
 	
-	public void executeStrategy(int towerLife, Lineup enemyLineup,
+	public void executeStrategy( Lineup enemyLineup,
 		                        int soldiersLost, Tower enemyTower) {
 		
-		super.executeStrategy(towerLife, enemyLineup,
+		super.executeStrategy(enemyTower.getLife(), enemyLineup,
 							  soldiersLost, enemyTower);
 	}
 }

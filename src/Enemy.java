@@ -47,8 +47,7 @@ public class Enemy extends User {
 	public void battleStrategy() {
 		
 		if(this.currentStrategy!=null) {
-			currentStrategy.executeStrategy(this.enemyLineup);
-			
+			currentStrategy.executeStrategy(this.enemyTower,this.enemyLineup);			
 		}
 	}
 }

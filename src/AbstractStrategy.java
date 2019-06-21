@@ -35,10 +35,10 @@ public abstract class AbstractStrategy implements EnemyStrategy {
 		public abstract void attackFormation(Lineup enemyLineup);
 		
 		
-		public void executeStrategy(int towerLife, Lineup enemyLineup,
+		public void executeStrategy( Lineup enemyLineup,
 								    int soldiersLost, Tower enemyTower) {
-			
-			this.callForBackup(towerLife, enemyLineup);
+		
+			this.callForBackup(enemyTower.getLife(), enemyLineup);
 			this.buyCatapult(soldiersLost, enemyTower);
 			this.normalFormation(enemyLineup);
 				attackFormation(enemyLineup);
