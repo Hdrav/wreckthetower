@@ -9,6 +9,7 @@ public interface Unit {
 	public double getTimeOfTraining();
 	public int getBodySize();
 	public int getFootPosition();
+	public boolean isPlayerUnit();
 	public int getUnitReach();
 	public void reduceHealth(int damage);
 

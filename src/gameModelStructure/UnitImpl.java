@@ -17,15 +17,15 @@ public class UnitImpl implements Unit {
 	private int bodySize;
 	private int footPosition;
 	private int unitReach;
-	
+//	private boolean playerUnit;
 	
 	public UnitImpl(WeaponTypes weapon,ArmorTypes armor){
-		
+	//	this.playerUnit=playerUnit;
 		this.life=(armor.getArmorLife()+UnitImpl.INITIAL_LIFE);
 		this.currentLife=this.life;
 		this.timeOfTraining=(armor.getArmorBuildingTime()
 							 +weapon.getWeaponBuildingTime());
-		this.speed=armor.getUnitSpeedPercentage();
+		this.speed=armor.getUnitSpeedValue();
 		this.damage=weapon.getWeaponDamage();
 		this.alive=true;
 		this.bodySize=armor.getBodySize();
@@ -64,6 +64,10 @@ public class UnitImpl implements Unit {
 	
 	public boolean isAlive() {
 		return this.alive;
+	}
+	
+	public boolean isPlayerUnit(){
+		return this.playerUnit;
 	}
 
 	public int getUnitReach() {

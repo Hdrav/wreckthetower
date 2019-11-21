@@ -1,5 +1,10 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import gameModelStructure.*;
 import view.utilities.*;
 
@@ -46,12 +51,43 @@ public class ControllerImpl implements Controller {
 		return this.user;
 	}
 	
-	public void setWeaponUnitTemplate(int index, String name) {
-		this.user.getUnitTemplateList().get(index).setWeapon(WeaponTypes.getWeapon(name));
-		this.user.getUnitTemplateList().get(index).setArmor(ArmorTypes.getArmor(name));
+	public void setEquipmentUnitTemplate() {
+
+		String[] equipmentName= new String[2];
+		for(int i=0; i<this.user.getNumberOfUnit(); i++) {
+			try {
+			equipmentName=this.extractEquipmentNameFromSetting(i);
+			}catch(IOException e) {}
+		
+			user.getUnitTemplateList().get(i).setWeapon(WeaponTypes.getWeapon(equipmentName[0]));
+			user.getUnitTemplateList().get(i).setArmor(ArmorTypes.getArmor(equipmentName[1]));
+		}
 	}
 	  
-	  
+
+	public String[] extractEquipmentNameFromSetting(int index) throws IOException {
+		BufferedReader file = new BufferedReader(new FileReader(new File("").getAbsolutePath()+"/res/setting_files/unit_setting.txt"));
+	    String extractedLine=new String("");
+	    String line=new String("");
+	    String equipmentName[];
+	    int lineIndex=0;
+	    
+	    while (line!=null && lineIndex<=index ) {
+    		if(lineIndex==index) {
+    			extractedLine=file.readLine();
+    		}
+    		else{
+    			line=file.readLine();
+    		}
+    		lineIndex=lineIndex+1;
+	    }
+	    
+	    file.close();
+	    equipmentName=extractedLine.split(",");
+	    
+	   
+		return equipmentName;
+	}
 
 	  
 	public static synchronized Controller getLog() {

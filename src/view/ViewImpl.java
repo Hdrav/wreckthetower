@@ -17,6 +17,7 @@ public class ViewImpl extends Application implements View {
 
 	private Stage primaryStage;
 	private final Stage secondaryStage;
+	private final Stage thirdStage;
 	private SceneLoader sceneLoader;
 	
 	
@@ -26,6 +27,9 @@ public class ViewImpl extends Application implements View {
 		this.secondaryStage=new Stage();
 		this.secondaryStage.setTitle("Units Selection");
 		this.secondaryStage.setResizable(false);
+		this.thirdStage=new Stage();
+		this.thirdStage.setTitle("Wreck the Tower!");
+		this.thirdStage.setResizable(false);
 	}
 	
 	
@@ -33,8 +37,12 @@ public class ViewImpl extends Application implements View {
 		return this.primaryStage;
 	}
 
-    public Stage getSecondaryStage() {
+    public Stage getChooseUnitsStage() {
 		return this.secondaryStage;
+    }
+    
+    public Stage getMainWindowStage() {
+    	return this.thirdStage;
     }
 
     public SceneLoader getSceneLoader() {

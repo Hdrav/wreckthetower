@@ -16,6 +16,7 @@ public class MainMenuController extends SceneControllerImpl {
 
 	    @FXML
 	    private void startGame() throws IOException {
+	    	this.getController().setEquipmentUnitTemplate();
 	        this.getSceneLoader().load(SceneTypes.STARTWINDOW);
 	    }
 

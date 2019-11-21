@@ -3,26 +3,26 @@ package view.utilities;
 public enum ArmorTypes {
 
 
-	LEATHER_LIGHT_ARMOR("leather light armor", 10, 7, 1.0, 1.0,4)
-	,IRON_MEDIUM_ARMOR("iron medium armor", 10, 15, 0.8, 1.0,4)
-	,GOLDEN_HEAVY_ARMOR("golden heavy armor", 65, 52, 0.58, 3.2,5)
+	LEATHER_LIGHT_ARMOR("leather light armor", 10, 7, 0.75, 1.0,4)
+	,IRON_MEDIUM_ARMOR("iron medium armor", 10, 15, 1.1, 1.0,4)
+	,GOLDEN_HEAVY_ARMOR("golden heavy armor", 65, 52, 1.30, 3.2,5)
 	,NOTHING("nothing", 0, 0, 1.0, 0.7,4);
 	
 	private static int NUMBER_OF_ARMOR=4;
 	private String armorName;
 	private int armorCost;
 	private int armorLife;
-	private double unitSpeedPercentage;
+	private double unitSpeedValue;
 	private double armorBuildingTime;
 	private int bodySize;
 	
 	ArmorTypes(String armorName, int armorCost, int armorLife,
-				double unitSpeedPercentage,double armorBuildingTime,int bodySize){
+				double unitSpeedValue,double armorBuildingTime,int bodySize){
 		
 		this.armorName=armorName;
 		this.armorCost=armorCost;
 		this.armorLife=armorLife;
-		this.unitSpeedPercentage=unitSpeedPercentage;
+		this.unitSpeedValue=unitSpeedValue;
 		this.armorBuildingTime=armorBuildingTime;
 		this.bodySize= bodySize;
 	}
@@ -68,8 +68,8 @@ public enum ArmorTypes {
 		return this.armorLife;
 	}
 	
-	public double getUnitSpeedPercentage() {
-		return this.unitSpeedPercentage;
+	public double getUnitSpeedValue() {
+		return this.unitSpeedValue;
 	}
 	
 	public double getArmorBuildingTime() {

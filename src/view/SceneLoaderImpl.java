@@ -16,13 +16,15 @@ import view.utilities.SceneTypes;
 public class SceneLoaderImpl implements SceneLoader {
 
 	 	private final Stage stage;
-	    private final Stage secondaryStage;
+	    private final Stage chooseUnitsStage;
+	    private final Stage mainWindowStage;
 	    private final View view;
 	    private boolean splitScreen;
 	
 	    public SceneLoaderImpl(final View view) {
 	        this.stage = view.getPrimaryStage();
-	        this.secondaryStage = view.getSecondaryStage();
+	        this.chooseUnitsStage = view.getChooseUnitsStage();
+	        this.mainWindowStage=view.getMainWindowStage();
 	      //  this.alert = new AlertWindowImpl("Exit", "Sei sicuro di voler uscire?", "yesNo"); //inizializza l'alert 
 	                                                                                           //se verrà cliccata
 	        this.view = view;
@@ -50,6 +52,14 @@ public class SceneLoaderImpl implements SceneLoader {
 	            this.stage.setScene(new Scene(root));    
 	                this.stage.sizeToScene();
 	        }
+	        
+	        
+	        if ((scene == SceneTypes.STARTWINDOW)) {
+	            this.mainWindowStage.setScene(new Scene(root));    
+	                this.mainWindowStage.sizeToScene();
+	                this.mainWindowStage.centerOnScreen();
+		            this.mainWindowStage.show();
+	        }
 
 	     /*   if ((scene != Scenes.RULEBOOK) && (scene != Scenes.RULEBOOKPAGE2)) {
 	            this.stage.setScene(new Scene(root));
@@ -74,10 +84,10 @@ public class SceneLoaderImpl implements SceneLoader {
 	        this.updateStagePosition();*/
 	        else if (scene==SceneTypes.CHOOSEUNITS) {
 	        	System.out.println("EHIIII");
-	            this.secondaryStage.setScene(new Scene(root));
-	            this.secondaryStage.sizeToScene();
-	            this.secondaryStage.centerOnScreen();
-	            this.secondaryStage.show();
+	            this.chooseUnitsStage.setScene(new Scene(root));
+	            this.chooseUnitsStage.sizeToScene();
+	            this.chooseUnitsStage.centerOnScreen();
+	            this.chooseUnitsStage.show();
 	           
 	        }
 	}

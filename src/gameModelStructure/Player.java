@@ -6,6 +6,7 @@ public interface Player {
 
 	public int getMoney();
 	public void addMoney(int money);
+	public void addUnit(int index);
 	public boolean buy(int id, int price);
 	
 	

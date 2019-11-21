@@ -13,6 +13,7 @@ public class User implements Player {
 	private final Tower tower;
 	private final LineUp lineup;
 	private List<UnitTemplate> unitTemplateList=null;
+	private List<Unit> unitQueue=new ArrayList<>();
 	
 	public User (int money, Tower tower, LineUp lineup) {
 		this.money=money;
@@ -51,6 +52,14 @@ public class User implements Player {
 
 	}
 
+	public void addUnit(int indexButton) {
+		this.unitQueue.add(new UnitImpl(this.unitTemplateList.get(indexButton).getWeapon(),
+						   this.unitTemplateList.get(indexButton).getArmor()));
+	}		
+	
+	public void removeUnit(int indexButton) {
+		this.unitQueue.remove(indexButton);
+	}
 	
 	public boolean buy(int id, int price) {
 		if(this.money<price) { 

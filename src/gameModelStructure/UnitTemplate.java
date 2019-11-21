@@ -64,6 +64,10 @@ public class UnitTemplate {
 		this.weapon=builder.weaponB;
 	}
 	*/
+	public double getSpeed() {
+		return (this.armor.getUnitSpeedValue());
+	}
+	
 	public int getCost() {
 		return (UnitTemplate.INITIAL_COST+this.weapon.getWeaponCost()+
 				this.armor.getArmorCost());

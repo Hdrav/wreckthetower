@@ -4,8 +4,6 @@ package view.scenecontroller;
 
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -59,8 +57,8 @@ public class UnitChoiceMenu extends SceneControllerImpl  {
 		this.weaponSelectMenu.setText("Weapon Selection");
 		this.armorSelectMenu.setText("Armor Selection");
 				
-		final  List<MenuItem> weaponList=new ArrayList();
-		final List<MenuItem> armorList= new ArrayList();
+		final  List<MenuItem> weaponList=new ArrayList<>();
+		final List<MenuItem> armorList= new ArrayList<>();
 	
 		
 		for(int i=0; i<WeaponTypes.getNumberOfWeapon(); i++)
@@ -75,14 +73,14 @@ public class UnitChoiceMenu extends SceneControllerImpl  {
 		
 		for(int i=0; i<WeaponTypes.getNumberOfWeapon(); i++) {
 			MenuItem item= weaponList.get(i);
-			int index=i;
+			
 			weaponList.get(i).setOnAction(e->{this.drawWeapon(item.getText(),pane,this.unitIndex);});
 
 		}
 		
 		for(int i=0; i<ArmorTypes.getNumberOfArmor(); i++) {
 			MenuItem item= armorList.get(i);
-			int index=i;
+			
 			armorList.get(i).setOnAction(e->{this.drawArmor(item.getText(),pane,this.unitIndex);});
 
 		}

@@ -2,7 +2,7 @@ package view.scenecontroller;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import java.util.List;
 import controller.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,7 +24,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import view.scenecontroller.UnitChoiceMenu;
-import view.utilities.WeaponTypes;
+
 
 public class ChooseUnitsController extends SceneControllerImpl {
 
