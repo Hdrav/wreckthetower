@@ -3,28 +3,30 @@ package view.utilities;
 public enum WeaponTypes {
 	
 
-	SHORT_SWORD("short sword", 10, 5, 0.8, 0.6, 2)
-	,SHORT_BOW("short bow", 25, 4, 1.0, 1.0,12)
-	,GOLDEN_SPEAR("golden spear", 45, 15, 1, 2.3,4)
-	,NOTHING("nothing", 0, 1, 0.7, 0.5,2);
+	SHORT_SWORD("short sword",true, 10, 5, 0.8, 0.6, 2,0.7)
+	,SHORT_BOW("short bow", false,25, 4, 1.0, 1.0,12,0.8)
+	,GOLDEN_SPEAR("golden spear",true, 45, 15, 1, 2.3,4,1.3)
+	,NOTHING("nothing",true, 0, 2, 0.7, 0.5,2,0.9);
 
 	private static int NUMBER_OF_WEAPON=4;
 	private String weaponName;
+	private Boolean melee;
 	private int weaponCost;
 	private int weaponDamage;
 	private double weaponAttackSpeed;
 	private double weaponBuildingTime;
-	private int weaponReach;
+	private double weaponDelay;
 	
-	WeaponTypes(String weaponName, int weaponCost, int weaponDamage,
-				double weaponAttackSpeed,double weaponBuildingTime,int weaponReach){
-		
+	WeaponTypes(String weaponName,Boolean melee, int weaponCost, int weaponDamage,
+				double weaponAttackSpeed,double weaponBuildingTime,int weaponReach,double weaponDelay){
+
 		this.weaponName=weaponName;
+		this.melee=melee;
 		this.weaponCost=weaponCost;
 		this.weaponDamage=weaponDamage;
 		this.weaponAttackSpeed=weaponAttackSpeed;
 		this.weaponBuildingTime=weaponBuildingTime;
-		this.weaponReach=weaponReach;
+		this.weaponDelay=weaponDelay;
 	}
 
 	public static int getNumberOfWeapon() {
@@ -65,6 +67,10 @@ public enum WeaponTypes {
 		return this.weaponCost;
 	}
 	
+	public boolean isMelee() {
+		return this.melee;
+	}
+	
 	public int getWeaponDamage() {
 		return this.weaponDamage;
 	}
@@ -77,8 +83,8 @@ public enum WeaponTypes {
 		return this.weaponBuildingTime;
 	}
 	
-	public int getWeaponReach() {
-		return this.weaponReach;
+	public double getWeaponDelay() {
+		return this.weaponDelay;
 	}
 	
 	public String toString(){

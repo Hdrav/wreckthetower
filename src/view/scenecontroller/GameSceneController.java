@@ -50,17 +50,11 @@ public class GameSceneController extends SceneControllerImpl{
 	
 	private HBox unitHBox;
 	
-	//private GameSpriteCanvas gameCanvas;
-	
 	private GraphicsContext graphicsGameCanvas;
 	
 	private Canvas gameCanvas;
 	
 	private List<Button> unitCreationButtonList;
-	
-	private SpriteImpl userTower;
-	
-	private SpriteImpl enemyTower;
 	
 	private Image groundTile;
 	
@@ -70,14 +64,11 @@ public class GameSceneController extends SceneControllerImpl{
 	
 	private Image background;
 	
-	private SpriteUnitAnimation spriteUnitAnimation;
+	private GameSpriteAnimation gameSpriteAnimation;
 	
 	public void initialize() {
 		
 		this.unitCreationButtonList=new ArrayList<Button>();
-	/*	this.background.setImage(new Image("/map_of_the_game/backgroundMainPane.png"));
-		this.firstGroundTile.setImage(new Image("/map_of_the_game/terreno.png"));
-		this.secondGroundTile.setImage(new Image("/map_of_the_game/terreno.png"));*/
 		this.userPane.setBackground(new Background(new BackgroundImage(new Image ("/map_of_the_game/user_pane_background.png"),null,null,null,null)));
 		this.initializeUserPane();
 		this.gameCanvas= new Canvas();
@@ -87,13 +78,7 @@ public class GameSceneController extends SceneControllerImpl{
 		this.groundTile=new Image("/map_of_the_game/terreno.png");
 		this.userTowerImage= new Image("/map_of_the_game/tower_player.png");
 		this.enemyTowerImage=new Image("/map_of_the_game/enemy_tower01.png");
-		
-		this.enemyTower=new SpriteImpl.SpriteImplBuilder().height(240).width(140).mainImage(enemyTowerImage)
-				.positionX(1488).positionY(385).xOffset(0).yOffset(0)
-				.boundaryHeight(240).boundaryHeight(120).build();
-		this.userTower=new SpriteImpl.SpriteImplBuilder().height(240).width(140).mainImage(userTowerImage)
-				.positionX(-8).positionY(385).xOffset(0).yOffset(0)
-				.boundaryHeight(240).boundaryHeight(120).build();
+	
 		this.scrolledPane.getChildren().add(this.gameCanvas);
 		this.gameCanvas.setHeight(800);
 		this.gameCanvas.setWidth(1600);
@@ -101,9 +86,9 @@ public class GameSceneController extends SceneControllerImpl{
 		AnchorPane.setBottomAnchor(this.gameCanvas, 0.0);
 		AnchorPane.setLeftAnchor(this.gameCanvas, 0.0);
 		AnchorPane.setRightAnchor(this.gameCanvas, 0.0);
-		this.renderTowers();
-		this.spriteUnitAnimation=new SpriteUnitAnimation();
-		this.scrolledPane.getChildren().add(this.spriteUnitAnimation.getUnitDisplayPane());
+		this.renderBackground();
+		this.gameSpriteAnimation=new GameSpriteAnimation();
+		this.scrolledPane.getChildren().add(this.gameSpriteAnimation.getUnitDisplayPane());
 	}
 	
 	private void initializeUserPane() {
@@ -134,6 +119,7 @@ public class GameSceneController extends SceneControllerImpl{
 	
 	
 	private void initializeUnitButton() {
+		//System.out.println(""+this.getController().getUser().getNumberOfUnit());
 		for(int i=0; i<this.getController().getUser().getNumberOfUnit(); i++) {
 			Image weaponImage= new Image("/weapon_icon/"+this.getController().getUser()
 														   .getUnitTemplateList().get(i).getWeapon().toString()+" icon.png");
@@ -151,6 +137,7 @@ public class GameSceneController extends SceneControllerImpl{
 			Button creationButton= new Button("",canvas);		
 			this.unitCreationButtonList.add(creationButton);
 			int index=i;
+			
 			creationButton.setOnAction((e->{this.buttonCreateUnit(index);}));
 			
 			
@@ -159,33 +146,22 @@ public class GameSceneController extends SceneControllerImpl{
 	}
 	
 	public void buttonCreateUnit(int index) {
-		this.getController().getUser().addUnit(index);
-		this.spriteUnitAnimation.createUnitSprite(index);
-	}
-	
-	
-	public void renderTowers() {
 		
-		this.renderTowerPlayer();
-		this.renderTowerEnemy();
+		if(this.getController().canUserBuy(index)) {
+		this.gameSpriteAnimation.createUnitUser(index);
+		this.getController().getUser().buy(index);
+		}
 	}
 	
-	public void renderTowerPlayer() {
+	
+
+	
+	public void renderBackground() {
 		this.graphicsGameCanvas.drawImage(this.background, 0, 0);
 		this.graphicsGameCanvas.drawImage(this.groundTile, 0, 625);
 		this.graphicsGameCanvas.drawImage(this.groundTile, 1000, 625);
-		this.userTower.render(this.graphicsGameCanvas);
 	}
 	
-	public void renderTowerEnemy() {
-		this.enemyTower.render(this.graphicsGameCanvas);
-		
-		/*Image unit= new Image("/animations/basic_player_animations/unit_movement01.png");
-		SpriteUnit sprite= new SpriteUnit.SpriteUnitBuilder().armor(null).boundaryHeight(0).boundaryWidth(0)
-							.positionX(53).positionY(505).height(120).width(120).mainImage(unit)
-							.weapon(null).xOffset(0).yOffset(0).build();
-		sprite.render(this.graphicsGameCanvas);*/
-	}
 	
 	
 

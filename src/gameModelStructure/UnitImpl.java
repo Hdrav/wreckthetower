@@ -16,7 +16,7 @@ public class UnitImpl implements Unit {
 	private boolean alive;
 	private int bodySize;
 	private int footPosition;
-	private int unitReach;
+	private double weaponDelay;
 //	private boolean playerUnit;
 	
 	public UnitImpl(WeaponTypes weapon,ArmorTypes armor){
@@ -30,7 +30,7 @@ public class UnitImpl implements Unit {
 		this.alive=true;
 		this.bodySize=armor.getBodySize();
 		this.footPosition=UnitImpl.STARTING_FOOT_POSITION;
-		this.unitReach=weapon.getWeaponReach();
+		this.weaponDelay=weapon.getWeaponDelay();
 	}
 	
 	@Override

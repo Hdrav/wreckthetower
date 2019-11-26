@@ -5,6 +5,12 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import view.scenecontroller.SceneControllerImpl;
+import view.sprite.frameutilities.BasicUnitFrameMoving;
+import view.sprite.frameutilities.BowUnitEnemyFrameMoving;
+import view.sprite.frameutilities.BowUnitFrameMoving;
+import view.sprite.frameutilities.NothingUnitFrameMoving;
+import view.sprite.frameutilities.SpearUnitFrameMoving;
+import view.sprite.frameutilities.SwordUnitFrameMoving;
 
 public class FrameUnitBuilder extends SceneControllerImpl {
 	
@@ -18,6 +24,12 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	private List<Image> armorAttackFrameList;
 	private List<Image> weaponAttackFrameList;
 	
+	private List<Image> bodyChargingFrameList;
+	private List<Image> armorChargingFrameList;
+	private List<Image> weaponChargingFrameList;
+	
+	private List<Image> arrowFrameList;
+	
 	private List<Image> bodyDyingFrameList;
 	private List<Image> armorDyingFrameList;
 	private List<Image> weaponDyingFrameList;
@@ -29,6 +41,11 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	private double xOffset;
 	private double yOffset;
 
+	
+	private double weaponBoundaryHeight;
+	private double weaponBoundaryWidth;
+	private double weaponXOffset;
+	private double weaponYOffset;
 	
 	private FrameUnitBuilder(int index) {
 		
@@ -59,18 +76,20 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 			this.xOffset=38;
 			this.yOffset=-80;
 			this.bodyMovingFrameList=BasicUnitFrameMoving.BODY.getFrameList();
-			
+			this.bodyDyingFrameList=BasicUnitFrameMoving.BODY_DYING.getFrameList();
 			if(weaponName.contains("sword")) {
-				System.out.println("ha la spada");
 				this.setSwordman(armorName);
 			}
 			else if(weaponName.contains("golden spear")) {
 				
 				this.setSpearman(armorName);
 			}
-			else if(weaponName.equals("nothing")) {
+			else if(weaponName.contains("nothing")) {
 				
 				this.setNothingman(armorName);
+			}
+			else if(weaponName.contains("bow")) {
+				this.setArcher(armorName);
 			}
 		}
 	}
@@ -94,6 +113,11 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	
 	
 	private void setGiantSword() {
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=82;
+		this.weaponXOffset=30;
+		this.weaponYOffset=-66;
+		
 		this.bodyAttackFrameList=SwordUnitFrameMoving.SWORDMAN_GIANT_ATTACK.getFrameList();
 		this.armorAttackFrameList=SwordUnitFrameMoving.SWORDMAN_GOLDEN_ARMOR.getFrameList();
 		this.weaponMovingFrameList=SwordUnitFrameMoving.SHORT_SWORD_GIANT_MOVEMENT.getFrameList();
@@ -103,6 +127,12 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	}
 	
 	private void setSwordman(String armorName) {
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=82;
+		this.weaponXOffset=38;
+		this.weaponYOffset=-66;
+		
+		
 		this.bodyAttackFrameList=SwordUnitFrameMoving.SWORDMAN_ATTACK.getFrameList();
 		this.weaponMovingFrameList=SwordUnitFrameMoving.SHORT_SWORD_MOVEMENT.getFrameList();
 		this.weaponAttackFrameList=SwordUnitFrameMoving.SHORT_SWORD_ATTACK.getFrameList();
@@ -120,12 +150,24 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	}
 	
 	private void setGiantNothing() {
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=72;
+		this.weaponXOffset=30;
+		this.weaponYOffset=-66;
 		this.bodyAttackFrameList=NothingUnitFrameMoving.NOTHING_GIANT_ATTACK.getFrameList();
 		this.armorAttackFrameList=NothingUnitFrameMoving.NOTHING_GOLDEN_ARMOR.getFrameList();
+		
 	}
 	
 	
 	private void setNothingman(String armorName) {
+		
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=72;
+		this.weaponXOffset=38;
+		this.weaponYOffset=-66;
+		
+		
 		this.bodyAttackFrameList=NothingUnitFrameMoving.NOTHING_ATTACK.getFrameList();
 		
 		
@@ -142,6 +184,12 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	
 	
 	private void setGiantGoldenSpear() {
+		
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=100;
+		this.weaponXOffset=30;
+		this.weaponYOffset=-66;
+		
 		this.bodyAttackFrameList=SpearUnitFrameMoving.LANCER_GIANT_ATTACK.getFrameList();
 		this.armorAttackFrameList=SpearUnitFrameMoving.LANCER_GOLDEN_ARMOR.getFrameList();
 		this.weaponMovingFrameList=SpearUnitFrameMoving.GOLDEN_SPEAR_GIANT_MOVEMENT.getFrameList();
@@ -150,6 +198,13 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	}
 	
 	private void setSpearman(String armorName) {
+		
+		
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=100;
+		this.weaponXOffset=38;
+		this.weaponYOffset=-66;
+		
 		this.bodyAttackFrameList=SpearUnitFrameMoving.LANCER_ATTACK.getFrameList();
 		this.weaponMovingFrameList=SpearUnitFrameMoving.GOLDEN_SPEAR_MOVEMENT.getFrameList();
 		this.weaponAttackFrameList=SpearUnitFrameMoving.GOLDEN_SPEAR_ATTACK.getFrameList();
@@ -166,6 +221,59 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 		
 		
 	}
+	
+	
+	private void setArcher(String armorName) {
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=630;
+		this.weaponXOffset=-10;
+		this.weaponYOffset=-66;
+		
+		this.bodyAttackFrameList=BowUnitFrameMoving.ARCHER_ATTACK.getFrameList();
+		this.bodyChargingFrameList=BowUnitFrameMoving.ARCHER_CHARGING.getFrameList();
+		this.weaponMovingFrameList=BowUnitFrameMoving.SHORT_BOW_MOVEMENT.getFrameList();
+		this.weaponAttackFrameList=BowUnitFrameMoving.SHORT_BOW_ATTACK.getFrameList();
+		this.weaponChargingFrameList=BowUnitFrameMoving.SHORT_BOW_CHARGING.getFrameList();
+		this.weaponDyingFrameList=BowUnitFrameMoving.SHORT_BOW_DYING.getFrameList();
+		
+		if(armorName.equals("iron medium armor")) {
+			this.setIronMediumArmor();
+			this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_IRON_ARMOR_ATTACK.getFrameList();
+			this.armorChargingFrameList=BowUnitEnemyFrameMoving.ARCHER_IRON_ARMOR_CHARGE.getFrameList();
+		}
+		if(armorName.equals("leather light armor")) {
+			this.setLeatherLightArmor();
+			this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_LEATHER_ARMOR_ATTACK.getFrameList();
+			this.armorChargingFrameList=BowUnitEnemyFrameMoving.ARCHER_LEATHER_ARMOR_CHARGE.getFrameList();
+		}
+		
+		
+	}
+	
+	
+	
+	
+	private void setGiantArcher() {
+		
+		this.weaponBoundaryHeight=54;
+		this.weaponBoundaryWidth=230;
+		this.weaponXOffset=-10;
+		this.weaponYOffset=-66;
+		
+		this.bodyAttackFrameList=BowUnitFrameMoving.ARCHER_GIANT_ATTACK.getFrameList();
+		this.bodyChargingFrameList=BowUnitFrameMoving.ARCHER_GIANT_CHARGING.getFrameList();
+		this.weaponMovingFrameList=BowUnitFrameMoving.SHORT_BOW_GIANT_MOVEMENT.getFrameList();
+		this.weaponAttackFrameList=BowUnitFrameMoving.SHORT_BOW_GIANT_ATTACK.getFrameList();
+		this.weaponChargingFrameList=BowUnitFrameMoving.SHORT_BOW_GIANT_CHARGING.getFrameList();
+		this.weaponDyingFrameList=BowUnitFrameMoving.SHORT_BOW_DYING.getFrameList();
+		
+
+		this.armorAttackFrameList=BowUnitFrameMoving.ARCHER_GOLDEN_ARMOR_ATTACK.getFrameList();
+		this.armorChargingFrameList=BowUnitFrameMoving.ARCHER_GOLDEN_ARMOR_CHARGE.getFrameList();
+	
+	}
+
+	
 	
 	private void initializeHeavyUnit(String weaponName) {
 		
@@ -184,15 +292,21 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 			
 			this.setGiantNothing();
 		}
-		
+		else if(weaponName.equals("short bow")) {
+			
+			this.setGiantArcher();
+		}
 	}
 		
 	public FrameUnitManager build() {
-		return new FrameUnitManager(this.weaponName,this.armorName,this.bodyMovingFrameList,this.armorMovingFrameList,
-									this.weaponMovingFrameList,this.bodyAttackFrameList,this.armorAttackFrameList,
-									this.weaponAttackFrameList,this.bodyDyingFrameList,this.armorDyingFrameList,
-									this.weaponDyingFrameList,this.boundaryHeight,this.boundaryWidth,this.height,
-									this.width,this.xOffset,this.yOffset);
+			return new FrameUnitManager(this.weaponName,this.armorName,this.bodyMovingFrameList,this.armorMovingFrameList,
+										this.weaponMovingFrameList,this.bodyAttackFrameList,this.armorAttackFrameList,
+										this.weaponAttackFrameList,this.bodyChargingFrameList,
+										this.armorChargingFrameList,this.weaponChargingFrameList,this.arrowFrameList,
+										this.bodyDyingFrameList,this.armorDyingFrameList,
+										this.weaponDyingFrameList,this.boundaryHeight,this.boundaryWidth,this.height,
+										this.width,this.xOffset,this.yOffset,this.weaponBoundaryHeight,this.weaponBoundaryWidth,
+										this.weaponXOffset,this.weaponYOffset);
 	}
 
 }

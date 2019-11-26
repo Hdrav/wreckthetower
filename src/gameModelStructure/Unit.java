@@ -10,6 +10,7 @@ public interface Unit {
 	public int getBodySize();
 	public int getFootPosition();
 	public boolean isPlayerUnit();
+	public boolean isAlive();
 	public int getUnitReach();
 	public void reduceHealth(int damage);
 

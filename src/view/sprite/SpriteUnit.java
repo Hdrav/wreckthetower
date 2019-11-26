@@ -3,13 +3,17 @@ package view.sprite;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import view.sprite.BasicUnitFrameMoving;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import view.sprite.SpriteImpl.Init;
 import view.sprite.SpriteImpl.SpriteImplBuilder;
+import view.sprite.frameutilities.BasicUnitFrameMoving;
 
 public class SpriteUnit extends SpriteImpl {
 	
@@ -20,11 +24,24 @@ public class SpriteUnit extends SpriteImpl {
 	private ImageView weaponView;
 	private ImageView bodyView;
 	private boolean justCreated;
+	private double weaponHeight;
+	private double weaponWidth;
+	private double weaponBoundaryHeight;
+	private double weaponBoundaryWidth;
+	private double weaponXOffset;
+	private double weaponYOffset;
+	
 	
 	protected static abstract class Init<T extends Init<T>> extends SpriteImpl.Init<T> {
 		
 		private Image armor;
 		private Image weapon;
+		private double weaponHeight;
+		private double weaponWidth;
+		private double weaponBoundaryHeight;
+		private double weaponBoundaryWidth;
+		private double weaponXOffset;
+		private double weaponYOffset;
 		/*
 		 * abstract method to return the appropriate "this"
 		 * depending of the Builder. every builder that extends "Init<T extends Init<T>>" has to
@@ -42,6 +59,38 @@ public class SpriteUnit extends SpriteImpl {
 	    	return self();
 	    }
 	    
+	    public T weaponHeight(double weaponHeight) {
+	    	this.weaponHeight=weaponHeight;
+	    	return self();
+	    }
+	    
+	    
+	    public T weaponBoundaryHeight(double BoundaryHeight) {
+	    	this.weaponBoundaryHeight=BoundaryHeight;
+	    	return self();
+	    }
+	   
+	    public T weaponWidth(double weaponWidth) {
+	    	this.weaponWidth=weaponWidth;
+	    	return self();
+	    }
+	    
+	    public T weaponBoundaryWidth(double weaponBoundaryWidth) {
+	    	this.weaponBoundaryWidth=weaponBoundaryWidth;
+	    	return self();
+	    }
+	    
+	    public T weaponXOffset(double weaponXOffset) {
+	    	this.weaponXOffset=weaponXOffset;
+	    	return self();
+	    }
+	    
+	    public T weaponYOffset(double weaponYOffset) {
+	    	this.weaponYOffset=weaponYOffset;
+	    	return self();
+	    }
+	    
+	    
 	    public SpriteUnit build() {
 	            return new SpriteUnit(this);
 	    }
@@ -52,7 +101,12 @@ public class SpriteUnit extends SpriteImpl {
     	
     	private Image armor;
     	private Image weapon;
-    	
+    	private double weaponHeight;
+    	private double weaponWidth;
+    	private double weaponBoundaryHeight;
+    	private double weaponBoundaryWidth;
+    	private double weaponXOffset;
+    	private double weaponYOffset;
         @Override
         protected SpriteUnitBuilder self() {
             return this;
@@ -78,7 +132,25 @@ public class SpriteUnit extends SpriteImpl {
 			this.weaponView=new ImageView(this.weapon);
 			this.frameGroup=new Group(this.bodyView,this.armorView,this.weaponView);
 			this.justCreated=true;
+			this.weaponHeight=init.weaponHeight;
+			this.weaponWidth=init.weaponWidth;
+			this.weaponBoundaryHeight=init.weaponBoundaryHeight;
+			this.weaponBoundaryWidth=init.weaponBoundaryWidth;
+			this.weaponXOffset=init.weaponXOffset;
+			this.weaponYOffset=init.weaponYOffset;
 		
+	}
+	
+	public Rectangle2D distanceBundary() {
+		return new Rectangle2D(this.getPositionX()+this.getxOffset()-60,
+				this.getPositionY()+this.getyOffset(),
+				this.getBoundaryWidth()+60,this.getBoundaryHeight());
+	}
+	
+	
+	
+	public boolean mantainDistance(Sprite sprite) {
+		return sprite.getBoundary().intersects(this.distanceBundary());
 	}
 	
 	
@@ -95,7 +167,7 @@ public class SpriteUnit extends SpriteImpl {
 	
 	public void incrementPositionX(double x) {
 		double position= this.getPositionX()+x;
-	//	System.out.println(position);
+
 		this.setPositionX(position);
 	}
 	
@@ -105,6 +177,26 @@ public class SpriteUnit extends SpriteImpl {
 	}
 	
 	
+	public double getWeaponBoundaryHeight() {
+		return weaponBoundaryHeight;
+	}
+
+
+	public double getWeaponBoundaryWidth() {
+		return weaponBoundaryWidth;
+	}
+
+
+	public double getWeaponXOffset() {
+		return weaponXOffset;
+	}
+
+
+	public double getWeaponYOffset() {
+		return weaponYOffset;
+	}
+
+
 	@Override
 	public void setPositionY(double y) {
 		this.setPositionY(this.getPositionY()+y);
@@ -114,12 +206,20 @@ public class SpriteUnit extends SpriteImpl {
 		return this.frameGroup;
 	}
 	
+	public Rectangle2D getBoundaryWeapon() {
+		return new Rectangle2D(this.getPositionX()+this.weaponXOffset,
+								this.getPositionY()+this.weaponYOffset,
+								this.weaponBoundaryWidth,this.weaponBoundaryHeight);
+	}
 	
 	@Override
 	public String toString() {
 		return "SpriteUnit [armor=" + armor + ", weapon=" + weapon + "]";
 	}
 	
-	
+	public boolean weaponIntersectEnemy(Sprite sprite) {
+		return sprite.getBoundary().intersects(this.getBoundaryWeapon());
+		
+	}
 
 }

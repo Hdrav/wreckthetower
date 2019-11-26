@@ -7,18 +7,14 @@ public interface Player {
 	public int getMoney();
 	public void addMoney(int money);
 	public void addUnit(int index);
-	public boolean buy(int id, int price);
+	public boolean buy(int id);
 	
 	
 	public int getNumberOfUnit();
-	
+	public List<Unit> getUnitQueue();
 	
 	public Tower getTower();
-	
 
-	public LineUp getLineUp();
-
-	
 	
 	public List<UnitTemplate> getUnitTemplateList();
 	

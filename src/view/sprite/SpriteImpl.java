@@ -12,6 +12,10 @@ public class SpriteImpl implements Sprite {
 	private static double STANDARD_TOWER_SPRITE_HEIGHT=240;
 	private static double BOUNDARY_WIDTH_TOWER=120;
 	private static double BOUNDARY_HEIGHT_TOWER=240;
+	
+	
+	
+	
 	private  double boundaryWidth;
 	private  double boundaryHeight;
 	private  double xOffset;
@@ -113,25 +117,25 @@ public class SpriteImpl implements Sprite {
 	
 	
 	public SpriteImpl(Init<?>init) {
-		this.boundaryHeight=init.boundaryHeight;
-		this.boundaryWidth=init.boundaryWidth;
+		this.setBoundaryHeight(init.boundaryHeight);
+		this.setBoundaryWidth(init.boundaryWidth);
 		this.height=init.height;
 		this.mainImage=init.mainImage;
 		this.positionX=init.positionX;
 		this.positionY=init.positionY;
 		this.width=init.width;
 		this.xOffset=init.xOffset;
-		this.yOffset=init.yOffset;
+		this.setyOffset(init.yOffset);
 		this.enemy=init.enemy;
 	}
 
 	
 	
 	public Rectangle2D getBoundary() {
-		
-		return new Rectangle2D(this.getPositionX()+this.xOffset,
-								this.getPositionY()+this.yOffset,
-								this.boundaryWidth,this.boundaryHeight);
+	//	System.out.println("weapon width"+this.getPositionX()+this.boundaryWidth);
+		return new Rectangle2D(this.getPositionX()+this.getxOffset(),
+								this.getPositionY()+this.getyOffset(),
+								this.getBoundaryWidth(),this.getBoundaryHeight());
 	}
 
 
@@ -242,6 +246,48 @@ public class SpriteImpl implements Sprite {
 	@Override
 	public boolean intersects(Sprite sprite) {
 		return sprite.getBoundary().intersects(this.getBoundary());
+	}
+
+
+
+	public double getyOffset() {
+		return yOffset;
+	}
+
+
+
+	public void setyOffset(double yOffset) {
+		this.yOffset = yOffset;
+	}
+
+
+
+	public double getBoundaryWidth() {
+		return boundaryWidth;
+	}
+
+
+
+	public void setBoundaryWidth(double boundaryWidth) {
+		this.boundaryWidth = boundaryWidth;
+	}
+
+
+
+	public double getBoundaryHeight() {
+		return boundaryHeight;
+	}
+
+
+
+	public void setBoundaryHeight(double boundaryHeight) {
+		this.boundaryHeight = boundaryHeight;
+	}
+
+
+
+	public double getxOffset() {
+		return xOffset;
 	}
 
 
