@@ -1,16 +1,13 @@
 package view.sprite;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import view.sprite.SpriteImpl.Init;
 
 public abstract class AbstractSpriteImpl implements Sprite {
 	
-	private static int INDEX_STATIC_SPRITE=0;
+//	private static int INDEX_STATIC_SPRITE=0;
     private Image mainImage;
     private double positionX;
     private double positionY;

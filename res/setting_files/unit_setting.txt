@@ -1,3 +1,0 @@
-short bow,iron medium armor
-nothing,nothing
-nothing,nothing

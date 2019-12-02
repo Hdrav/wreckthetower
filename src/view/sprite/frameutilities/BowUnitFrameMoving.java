@@ -70,7 +70,8 @@ public enum BowUnitFrameMoving {
 	  * weapon dying
 	  * 
 	  * */
-	 ,SHORT_BOW_DYING("short_bow_dying0",2);
+	 ,SHORT_BOW_DYING("short_bow_dying0",2)
+	 ,SHORT_BOW_ARROW("arrow0",1);
 	
 	 
 	private  String path=new String("/animations/archer/");

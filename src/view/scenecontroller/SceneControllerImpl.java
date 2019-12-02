@@ -3,10 +3,11 @@ package view.scenecontroller;
 import controller.Controller;
 import controller.ControllerImpl;
 import view.SceneLoader;
+import view.SceneLoaderImpl;
 
 public class SceneControllerImpl implements SceneController {
 	
-    private SceneLoader sceneLoader;
+    private SceneLoader sceneLoader= SceneLoaderImpl.getLog();
     private final Controller controller = ControllerImpl.getLog();
 
     /**
@@ -21,7 +22,7 @@ public class SceneControllerImpl implements SceneController {
     public final SceneLoader getSceneLoader() {
         return this.sceneLoader;
     }
-
+    
     @Override
     public final void setSceneLoader(final SceneLoader sceneLoader) {
         this.sceneLoader = sceneLoader;

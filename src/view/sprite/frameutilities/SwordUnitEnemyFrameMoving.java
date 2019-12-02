@@ -67,7 +67,6 @@ public enum SwordUnitEnemyFrameMoving {
 		this.numberOfFrame=frame;
 		this.animationList=new ArrayList<>();
 		for(int i=1; i<=this.numberOfFrame; i++) {
-			System.out.println(path+imageNameId+i+".png");
 			animationList.add(new Image(new String(path+imageNameId+i+".png")));
 			
 		}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Spinner?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.scenecontroller.MainMenuController">
+   <children>
+   	  <fx:define>
+   	     <Image fx:id="wallpaper" url="@../title_wallpaper.png" />
+	  </fx:define>
+      <ImageView image="$wallpaper" fitHeight="500.0" fitWidth="550.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="0.0">
+      </ImageView>
+      <Button layoutX="240.0" layoutY="329.0" mnemonicParsing="false" onAction="#startGame" prefHeight="37.0" prefWidth="158.0" text="Play" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="345.0">
+         <font>
+            <Font name="DejaVu Serif Bold" size="18.0" />
+         </font>
+           <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <VBox fx:id="levelBox" layoutX="424.0" layoutY="336.0" prefHeight="55.0" prefWidth="78.0">
+         <children>
+            <Text fx:id="levelText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="81.7294921875" />
+ 
+         </children>
+         </VBox>
+               
+      <Button layoutX="188.0" layoutY="410.0" mnemonicParsing="false" onAction="#unitsMenu" prefHeight="37.0" prefWidth="225.0" text="Change Units" textAlignment="CENTER">
+         <font>
+            <Font name="DejaVu Serif Bold" size="18.0" />
+         </font>
+           <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

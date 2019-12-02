@@ -3,7 +3,7 @@ package view.scenecontroller;
 
 
 
-import javafx.collections.FXCollections;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -13,15 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import model.utilities.ArmorTypes;
+import model.utilities.WeaponTypes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
-import controller.Controller;
-import view.utilities.WeaponTypes;
 import view.ImageName;
-import view.utilities.ArmorTypes;
 
 public class UnitChoiceMenu extends SceneControllerImpl  {
 	
@@ -154,6 +152,7 @@ public class UnitChoiceMenu extends SceneControllerImpl  {
 		this.equipmentMenu=equipmentMenu;
 	}
 	
+	@SuppressWarnings("unused")
 	private void selectableWeaponsArmors() {
 		this.armorSelectMenu.getItems().add(new MenuItem());
 	}
@@ -178,7 +177,6 @@ public class UnitChoiceMenu extends SceneControllerImpl  {
 		else {
 			this.armorImage= new ImageName("/armors_icon/"+armorName+".png",armorName);
 			this.armorImageView.setImage(this.armorImage.getImage());
-			System.out.println(this.armorImage.getImageName());
 			if(this.weaponImageView!=null) {
 				this.redrawWeapon(drawingPane);
 				this.redrawFrame(drawingPane);
@@ -212,8 +210,6 @@ public class UnitChoiceMenu extends SceneControllerImpl  {
 
 	
 	private void drawWeapon(String weaponName,Pane drawingPane, int index) {
-		
-		System.out.println(weaponName);
 		
 		if(this.weaponImageView==null) {
 			this.weaponImageView=new ImageView();

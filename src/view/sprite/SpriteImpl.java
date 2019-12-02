@@ -132,7 +132,6 @@ public class SpriteImpl implements Sprite {
 	
 	
 	public Rectangle2D getBoundary() {
-	//	System.out.println("weapon width"+this.getPositionX()+this.boundaryWidth);
 		return new Rectangle2D(this.getPositionX()+this.getxOffset(),
 								this.getPositionY()+this.getyOffset(),
 								this.getBoundaryWidth(),this.getBoundaryHeight());

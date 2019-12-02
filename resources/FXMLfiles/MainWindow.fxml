@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.scenecontroller.GameSceneController">
+   <children>
+      <ScrollPane fx:id="scrollPane" prefHeight="800.0" prefWidth="1280.0" minWidth="1600.0" minHeight="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane fx:id="scrolledPane" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1600.0" />
+            <children>
+        	</children>
+        </content>
+      </ScrollPane>
+       <HBox fx:id="infoPane" prefHeight="150.0" prefWidth="1025.0">
+       	<children>
+       		<TabPane fx:id="userPane" prefHeight="150.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="unitTab" text="Basic Units"/>
+              </tabs>
+            </TabPane>
+            <VBox fx:id="goldLifeBox" prefHeight="150.0" prefWidth="225.0" />
+         </children>
+       </HBox>
+   </children>
+</AnchorPane>

@@ -6,16 +6,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import controller.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.Label;
-
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +22,10 @@ import view.scenecontroller.UnitChoiceMenu;
 
 
 public class ChooseUnitsController extends SceneControllerImpl {
+	/**
+	 *menu representing the control of the main panes of the "choose units"
+	 * stage
+	 */
 
 	@FXML
 	private AnchorPane mainPane;
@@ -48,6 +47,11 @@ public class ChooseUnitsController extends SceneControllerImpl {
 		this.unitSettingBox.getChildren().addAll(this.secondaryPaneList);
 	}
 	
+	/**
+	 * 
+	 * @param unitIndex the ith pane of the unit template view to add
+	 * @return the AnchorPane with all the unit information to be shown 
+	 */
 	private AnchorPane secondaryPaneInitialize(int unitIndex) {
 		
 		final AnchorPane pane =new AnchorPane();
@@ -82,8 +86,8 @@ public class ChooseUnitsController extends SceneControllerImpl {
 		pane.getChildren().add(unitChoiceBox.getUnitChoiceCost());
 		
 		try {
-		pane.getChildren().add(unitChoiceBox.getWeaponImageView());
-		pane.getChildren().add(unitChoiceBox.getArmorImageView());
+			pane.getChildren().add(unitChoiceBox.getWeaponImageView());
+			pane.getChildren().add(unitChoiceBox.getArmorImageView());
 		}catch(NullPointerException e) {};
 		
 		AnchorPane.setTopAnchor(unitChoiceBox.getUnitChoiceCost(),0.0);
@@ -91,20 +95,22 @@ public class ChooseUnitsController extends SceneControllerImpl {
 		return pane;
 	}
 
-	/*
+	/**
 	 * sets every line of the setting file
-	 * 
+	 * @param weapon the weapon name
+	 * @param armor the armor name
 	 * */
 	private void settingFileUnit(String[] weapon,String[] armor) throws IOException {
 		try {
-		        BufferedReader file = new BufferedReader(new FileReader(new File("").getAbsolutePath()+"/res/setting_files/unit_setting.txt"));
+		        BufferedReader file = new BufferedReader(new FileReader(new File("").getAbsolutePath()+"/resources/setting_files/unit_setting.txt"));
 		        StringBuffer inputBuffer = new StringBuffer();
-		        String line;
+		        @SuppressWarnings("unused")
+				String line;
 		        String appendLine;
 		        int index=0;
 		        
 		        while ((line = file.readLine()) != null) {
-		        		appendLine = weapon[index]+","+armor[index]; // replace the line here
+		        		appendLine = weapon[index]+","+armor[index]; 
 		        		inputBuffer.append(appendLine);
 		        		inputBuffer.append('\n');	
 		        		index=index+1;
@@ -112,7 +118,7 @@ public class ChooseUnitsController extends SceneControllerImpl {
 		        file.close();
 		 
 		        // write the new string with the replaced line OVER the same file
-		        FileOutputStream fileOut = new FileOutputStream(new File("").getAbsolutePath()+"/res/setting_files/unit_setting.txt");
+		        FileOutputStream fileOut = new FileOutputStream(new File("").getAbsolutePath()+"/resources/setting_files/unit_setting.txt");
 		        fileOut.write(inputBuffer.toString().getBytes());
 		        fileOut.close();
 		        
@@ -124,7 +130,7 @@ public class ChooseUnitsController extends SceneControllerImpl {
 	
 	/*
 	 * when "done" is pressed, gets the weapon's and armor's name selected
-	 * and call the private method "settingFileUnit
+	 * and call the private method "settingFileUnit"
 	 * */
 	public void saveUnitSetting() {
 		String[] weapon=new String[3];

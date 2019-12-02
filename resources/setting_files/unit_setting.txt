@@ -1,0 +1,3 @@
+short bow,leather light armor
+short bow,leather light armor
+short sword,golden heavy armor

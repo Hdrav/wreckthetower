@@ -70,7 +70,8 @@ public enum BowUnitEnemyFrameMoving {
 	  * weapon dying
 	  * 
 	  * */
-	 ,SHORT_BOW_DYING("short_bow_dying0",2);
+	 ,SHORT_BOW_DYING("short_bow_dying0",2)
+	 ,SHORT_BOW_ARROW("arrow0",1);
 	
 	 
 	private  String path=new String("/animations/enemies_animation/archer/");
@@ -81,7 +82,6 @@ public enum BowUnitEnemyFrameMoving {
 		this.numberOfFrame=frame;
 		this.animationList=new ArrayList<>();
 		for(int i=1; i<=this.numberOfFrame; i++) {
-			System.out.println(path+imageNameId+i+".png");
 			animationList.add(new Image(new String(path+imageNameId+i+".png")));
 		}
 	}

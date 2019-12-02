@@ -12,7 +12,12 @@ public interface SceneLoader {
     * @return the primary stage of the view
     */
    Stage getStage();
-
+/**
+ * 
+ * @return the main game scene of the view
+ */
+   Stage getMainWindowStage();
+   
    /**
     *
     * @param scene
@@ -21,4 +26,10 @@ public interface SceneLoader {
     *             if an I/O error occurs
     */
    void load(SceneTypes scene) throws IOException;
+
+ 
 }
+
+	
+
+

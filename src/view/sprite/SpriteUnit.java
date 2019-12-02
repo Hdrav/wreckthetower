@@ -1,19 +1,12 @@
 package view.sprite;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import view.sprite.SpriteImpl.Init;
-import view.sprite.SpriteImpl.SpriteImplBuilder;
-import view.sprite.frameutilities.BasicUnitFrameMoving;
+
 
 public class SpriteUnit extends SpriteImpl {
 	
@@ -111,6 +104,30 @@ public class SpriteUnit extends SpriteImpl {
         protected SpriteUnitBuilder self() {
             return this;
         }
+		public Image getArmor() {
+			return armor;
+		}
+		public Image getWeapon() {
+			return weapon;
+		}
+		public double getWeaponHeight() {
+			return weaponHeight;
+		}
+		public double getWeaponWidth() {
+			return weaponWidth;
+		}
+		public double getWeaponBoundaryHeight() {
+			return weaponBoundaryHeight;
+		}
+		public double getWeaponBoundaryWidth() {
+			return weaponBoundaryWidth;
+		}
+		public double getWeaponXOffset() {
+			return weaponXOffset;
+		}
+		public double getWeaponYOffset() {
+			return weaponYOffset;
+		}
     }
 
 	
@@ -220,6 +237,14 @@ public class SpriteUnit extends SpriteImpl {
 	public boolean weaponIntersectEnemy(Sprite sprite) {
 		return sprite.getBoundary().intersects(this.getBoundaryWeapon());
 		
+	}
+
+	public double getWeaponWidth() {
+		return weaponWidth;
+	}
+
+	public double getWeaponHeight() {
+		return weaponHeight;
 	}
 
 }

@@ -1,15 +1,31 @@
 package view;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.SceneLoader;
 
 public interface View {
 	
-    Stage getPrimaryStage(); //prima scena
+	/**
+    *
+    * @return the primary stage
+    */
+    Stage getPrimaryStage(); 
+    
+    /**
+     * 
+     * @return the choose unit stage
+     */
+    Stage getChooseUnitsStage(); 
 
-    Stage getChooseUnitsStage(); //seconda scena
- 
+    
+    /**
+    *
+    * @return the scene loader
+    */
     SceneLoader getSceneLoader();
 
+    /**
+     * 
+     * @return the main game stage
+     */
 	Stage getMainWindowStage();
 }

@@ -8,28 +8,23 @@ public enum SceneTypes {
     STARTWINDOW("MainWindow.fxml"),
     
     STARTMENU("StartMenu.fxml"),
-
     /**
      * To get ChooseUnits fxml file.
      */
-    CHOOSEUNITS("ChooseUnits2.fxml");
+    CHOOSEUNITS("ChooseUnits.fxml");
    
 
 	  private static final String SCENE_PATH = "/FXMLfiles/";
 	    private final String selectedScene;
 
-	    SceneTypes(final String sceneName) { //setta il nome della scena passata come argomento (il
-	    									//costruttore nelle enumerazioni prende come valori quelli elencati
-	    								   //nelle sue enumerazioni. es/: se facessi SceneTypes.STARTWINDOW 
-	    								  //inizializzerebbe la scena con il nome del file -> "StartWindow.fxml")
+	    SceneTypes(final String sceneName) { 
 	        this.selectedScene = sceneName;  
 	    }
 	    /**
 	     *
 	     * @return the path to fxml file
 	     */
-	    public String getPath() { //
-	        System.out.println(SceneTypes.SCENE_PATH+this.selectedScene);
+	    public String getPath() { 
 	        return SceneTypes.SCENE_PATH + this.selectedScene;
 	    
 	    }

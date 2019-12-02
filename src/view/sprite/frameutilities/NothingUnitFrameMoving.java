@@ -26,7 +26,6 @@ public enum NothingUnitFrameMoving {
 	 
 	 
 	private  String path=new String("/animations/nothing/");
-	private String enemyPath= new String("/animations/nothing/");
 	private int numberOfFrame;
 	private List<Image> animationList;
 	

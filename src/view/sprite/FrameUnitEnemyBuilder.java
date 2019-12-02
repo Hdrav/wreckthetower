@@ -1,13 +1,14 @@
 package view.sprite;
 
-import java.io.IOException;
+
 import java.util.List;
-import java.util.Optional;
+
 
 import javafx.scene.image.Image;
 import view.scenecontroller.SceneControllerImpl;
 import view.sprite.frameutilities.BasicUnitEnemyFrameMoving;
 import view.sprite.frameutilities.BowUnitEnemyFrameMoving;
+import view.sprite.frameutilities.BowUnitFrameMoving;
 import view.sprite.frameutilities.NothingUnitEnemyFrameMoving;
 import view.sprite.frameutilities.SpearUnitEnemyFrameMoving;
 import view.sprite.frameutilities.SwordUnitEnemyFrameMoving;
@@ -47,11 +48,9 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 	private double weaponYOffset;
 	
 	private FrameUnitEnemyBuilder(int index) {
-		
-
 		this.armorName=this.getController().getEnemy().getUnitTemplateList().get(index).getArmor().toString();
 		this.weaponName=this.getController().getEnemy().getUnitTemplateList().get(index).getWeapon().toString();
-
+		
 		
 		
 		if(armorName.contains("heavy")){
@@ -222,8 +221,8 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 	
 	private void setArcher(String armorName) {
 		this.weaponBoundaryHeight=54;
-		this.weaponBoundaryWidth=230;
-		this.weaponXOffset=-10;
+		this.weaponBoundaryWidth=180;
+		this.weaponXOffset=-130;
 		this.weaponYOffset=-66;
 		
 		this.bodyAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_ATTACK.getFrameList();
@@ -232,7 +231,7 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 		this.weaponAttackFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_ATTACK.getFrameList();
 		this.weaponChargingFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_CHARGING.getFrameList();
 		this.weaponDyingFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_DYING.getFrameList();
-		
+		this.arrowFrameList=BowUnitFrameMoving.SHORT_BOW_ARROW.getFrameList();
 		if(armorName.equals("iron medium armor")) {
 			this.setIronMediumArmor();
 			this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_IRON_ARMOR_ATTACK.getFrameList();
@@ -251,8 +250,8 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 	private void setGiantArcher() {
 		
 		this.weaponBoundaryHeight=54;
-		this.weaponBoundaryWidth=230;
-		this.weaponXOffset=-10;
+		this.weaponBoundaryWidth=180;
+		this.weaponXOffset=-122;
 		this.weaponYOffset=-66;
 		
 		this.bodyAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_GIANT_ATTACK.getFrameList();
@@ -261,7 +260,7 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 		this.weaponAttackFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_GIANT_ATTACK.getFrameList();
 		this.weaponChargingFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_GIANT_CHARGING.getFrameList();
 		this.weaponDyingFrameList=BowUnitEnemyFrameMoving.SHORT_BOW_DYING.getFrameList();
-		
+		this.arrowFrameList=BowUnitFrameMoving.SHORT_BOW_ARROW.getFrameList();
 
 		this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_GOLDEN_ARMOR_ATTACK.getFrameList();
 		this.armorChargingFrameList=BowUnitEnemyFrameMoving.ARCHER_GOLDEN_ARMOR_CHARGE.getFrameList();
@@ -302,4 +301,130 @@ public class FrameUnitEnemyBuilder extends SceneControllerImpl{
 									this.weaponXOffset,this.weaponYOffset);
 
 	}
+
+
+	public String getArmorName() {
+		return armorName;
+	}
+
+
+	public String getWeaponName() {
+		return weaponName;
+	}
+
+
+	public List<Image> getBodyMovingFrameList() {
+		return bodyMovingFrameList;
+	}
+
+
+	public List<Image> getArmorMovingFrameList() {
+		return armorMovingFrameList;
+	}
+
+
+	public List<Image> getWeaponMovingFrameList() {
+		return weaponMovingFrameList;
+	}
+
+
+	public List<Image> getBodyAttackFrameList() {
+		return bodyAttackFrameList;
+	}
+
+
+	public List<Image> getArmorAttackFrameList() {
+		return armorAttackFrameList;
+	}
+
+
+	public List<Image> getWeaponAttackFrameList() {
+		return weaponAttackFrameList;
+	}
+
+
+	public List<Image> getBodyChargingFrameList() {
+		return bodyChargingFrameList;
+	}
+
+
+	public List<Image> getArmorChargingFrameList() {
+		return armorChargingFrameList;
+	}
+
+
+	public List<Image> getWeaponChargingFrameList() {
+		return weaponChargingFrameList;
+	}
+
+
+	public List<Image> getArrowFrameList() {
+		return arrowFrameList;
+	}
+
+
+	public List<Image> getBodyDyingFrameList() {
+		return bodyDyingFrameList;
+	}
+
+
+	public List<Image> getArmorDyingFrameList() {
+		return armorDyingFrameList;
+	}
+
+
+	public List<Image> getWeaponDyingFrameList() {
+		return weaponDyingFrameList;
+	}
+
+
+	public double getHeight() {
+		return height;
+	}
+
+
+	public double getWidth() {
+		return width;
+	}
+
+
+	public double getBoundaryHeight() {
+		return boundaryHeight;
+	}
+
+
+	public double getBoundaryWidth() {
+		return boundaryWidth;
+	}
+
+
+	public double getxOffset() {
+		return xOffset;
+	}
+
+
+	public double getyOffset() {
+		return yOffset;
+	}
+
+
+	public double getWeaponBoundaryHeight() {
+		return weaponBoundaryHeight;
+	}
+
+
+	public double getWeaponBoundaryWidth() {
+		return weaponBoundaryWidth;
+	}
+
+
+	public double getWeaponXOffset() {
+		return weaponXOffset;
+	}
+
+
+	public double getWeaponYOffset() {
+		return weaponYOffset;
+	}
+	
 }

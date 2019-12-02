@@ -6,7 +6,6 @@ import java.util.List;
 import javafx.scene.image.Image;
 import view.scenecontroller.SceneControllerImpl;
 import view.sprite.frameutilities.BasicUnitFrameMoving;
-import view.sprite.frameutilities.BowUnitEnemyFrameMoving;
 import view.sprite.frameutilities.BowUnitFrameMoving;
 import view.sprite.frameutilities.NothingUnitFrameMoving;
 import view.sprite.frameutilities.SpearUnitFrameMoving;
@@ -225,7 +224,7 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	
 	private void setArcher(String armorName) {
 		this.weaponBoundaryHeight=54;
-		this.weaponBoundaryWidth=630;
+		this.weaponBoundaryWidth=250;
 		this.weaponXOffset=-10;
 		this.weaponYOffset=-66;
 		
@@ -235,16 +234,17 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 		this.weaponAttackFrameList=BowUnitFrameMoving.SHORT_BOW_ATTACK.getFrameList();
 		this.weaponChargingFrameList=BowUnitFrameMoving.SHORT_BOW_CHARGING.getFrameList();
 		this.weaponDyingFrameList=BowUnitFrameMoving.SHORT_BOW_DYING.getFrameList();
+		this.arrowFrameList=BowUnitFrameMoving.SHORT_BOW_ARROW.getFrameList();
 		
 		if(armorName.equals("iron medium armor")) {
 			this.setIronMediumArmor();
-			this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_IRON_ARMOR_ATTACK.getFrameList();
-			this.armorChargingFrameList=BowUnitEnemyFrameMoving.ARCHER_IRON_ARMOR_CHARGE.getFrameList();
+			this.armorAttackFrameList=BowUnitFrameMoving.ARCHER_IRON_ARMOR_ATTACK.getFrameList();
+			this.armorChargingFrameList=BowUnitFrameMoving.ARCHER_IRON_ARMOR_CHARGE.getFrameList();
 		}
 		if(armorName.equals("leather light armor")) {
 			this.setLeatherLightArmor();
-			this.armorAttackFrameList=BowUnitEnemyFrameMoving.ARCHER_LEATHER_ARMOR_ATTACK.getFrameList();
-			this.armorChargingFrameList=BowUnitEnemyFrameMoving.ARCHER_LEATHER_ARMOR_CHARGE.getFrameList();
+			this.armorAttackFrameList=BowUnitFrameMoving.ARCHER_LEATHER_ARMOR_ATTACK.getFrameList();
+			this.armorChargingFrameList=BowUnitFrameMoving.ARCHER_LEATHER_ARMOR_CHARGE.getFrameList();
 		}
 		
 		
@@ -270,7 +270,7 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 
 		this.armorAttackFrameList=BowUnitFrameMoving.ARCHER_GOLDEN_ARMOR_ATTACK.getFrameList();
 		this.armorChargingFrameList=BowUnitFrameMoving.ARCHER_GOLDEN_ARMOR_CHARGE.getFrameList();
-	
+		this.arrowFrameList=BowUnitFrameMoving.SHORT_BOW_ARROW.getFrameList();
 	}
 
 	
