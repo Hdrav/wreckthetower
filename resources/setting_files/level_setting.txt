@@ -1,1 +1,1 @@
-level reach:5
+level reach:1
