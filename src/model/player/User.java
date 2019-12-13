@@ -69,11 +69,7 @@ public class User implements Player {
 
 	public List<UnitTemplate> getUnitTemplateList() {
 		return this.unitTemplateList;
-	}
-
-	public void removeUnit(int indexButton) {
-		this.unitQueue.remove(indexButton);
-	}		
+	}	
 	
 	public void setUnitNumber(int unitNumber) {
 		this.unitNumber=unitNumber;

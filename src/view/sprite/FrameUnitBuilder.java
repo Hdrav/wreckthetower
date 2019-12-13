@@ -3,6 +3,7 @@ package view.sprite;
 import java.io.IOException;
 import java.util.List;
 
+import controller.Controller;
 import javafx.scene.image.Image;
 import view.scenecontroller.SceneControllerImpl;
 import view.sprite.frameutilities.BasicUnitFrameMoving;
@@ -11,7 +12,7 @@ import view.sprite.frameutilities.NothingUnitFrameMoving;
 import view.sprite.frameutilities.SpearUnitFrameMoving;
 import view.sprite.frameutilities.SwordUnitFrameMoving;
 
-public class FrameUnitBuilder extends SceneControllerImpl {
+public class FrameUnitBuilder {
 	
 	private String armorName;
 	private String weaponName;
@@ -49,8 +50,8 @@ public class FrameUnitBuilder extends SceneControllerImpl {
 	private FrameUnitBuilder(int index) {
 		
 		try {
-			this.armorName=this.getController().extractEquipmentNameFromSetting(index)[1];
-			this.weaponName=this.getController().extractEquipmentNameFromSetting(index)[0];
+			this.armorName=Controller.extractEquipmentNameFromSetting(index)[1];
+			this.weaponName=Controller.extractEquipmentNameFromSetting(index)[0];
 		} catch (IOException e) {
 			
 			e.printStackTrace();

@@ -150,7 +150,7 @@ public abstract class AnimateUnitOnPane {
 	 * on screen moving
 	 */
 	@SuppressWarnings("unused")
-	private List<Group> generateGroupOfImage() {
+	private final List<Group> generateGroupOfImage() {
 		ArrayList<Group> listOfGroupOfImage= new ArrayList<>();
 		List<ImageView> body=new ArrayList<ImageView>();
 		List<ImageView> weapon=new ArrayList<ImageView>();
@@ -185,7 +185,7 @@ public abstract class AnimateUnitOnPane {
 	 * on screen attacking
 	 */
 	@SuppressWarnings("unused")
-	protected List<Group> generateGroupOfImageAttack() {
+	protected final List<Group> generateGroupOfImageAttack() {
 		ArrayList<Group> listOfGroupOfImage= new ArrayList<>();
 		List<ImageView> body=new ArrayList<ImageView>();
 		List<ImageView> weapon=new ArrayList<ImageView>();
@@ -213,7 +213,7 @@ public abstract class AnimateUnitOnPane {
 	
 	
 	@SuppressWarnings("unused")
-	private List<Group> generateGroupOfImageDeath() {
+	private final List<Group> generateGroupOfImageDeath() {
 		ArrayList<Group> listOfGroupOfImage= new ArrayList<>();
 		List<ImageView> body=new ArrayList<ImageView>();
 		List<ImageView> weapon=new ArrayList<ImageView>();

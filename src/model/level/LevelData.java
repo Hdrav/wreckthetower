@@ -9,10 +9,7 @@ public enum LevelData {
 	LEVEL_1(150,350,350,new LevelOneStrategy(),3),
 	LEVEL_2(150,400,350,new Level2Strategy(),3),
 	LEVEL_3(190,500,350,new Level3Strategy(),3),
-	LEVEL_4(190,550,300,new Level4Strategy(),3),
-	LEVEL_5(200,600,250,new Level2Strategy(),4),
-	LEVEL_6(200,600,200,new Level2Strategy(),4),
-	LEVEL_7(200,1000,200,new Level2Strategy(),4);
+	LEVEL_4(190,550,300,new Level4Strategy(),3);
 	
 	private int gold;
 	private int towerEnemyLife;
@@ -39,10 +36,7 @@ public enum LevelData {
 		if(level==2) return LevelData.LEVEL_2;
 		if(level==3) return LevelData.LEVEL_3;
 		if(level==4) return LevelData.LEVEL_4;
-		if(level==1) return LevelData.LEVEL_5;
-		if(level==1) return LevelData.LEVEL_6;
-		if(level==1) return LevelData.LEVEL_7;
-		return LevelData.LEVEL_1;
+		return LevelData.LEVEL_4;
 	}
 
 	public int getGold() {

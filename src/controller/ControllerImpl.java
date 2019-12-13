@@ -60,7 +60,7 @@ public class ControllerImpl implements Controller {
 		else return true;
 	}
 	
-	public String[] extractEquipmentNameFromSetting(int index) throws IOException {
+	public static String[] extractEquipmentNameFromSetting(int index) throws IOException {
 		BufferedReader file = new BufferedReader(new FileReader(new File("").getAbsolutePath()+"/resources/setting_files/unit_setting.txt"));
 	    String extractedLine=new String("");
 	    String line=new String("");

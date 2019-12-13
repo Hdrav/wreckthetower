@@ -131,33 +131,7 @@ public class AnimateRangedUnitOnPane extends AnimateUnitOnPane {
 		getAttackEvent().play();
 	}
 	
-	@SuppressWarnings("unused")
-	@Override
-	protected List<Group> generateGroupOfImageAttack() {
-		ArrayList<Group> listOfGroupOfImage= new ArrayList<>();
-		List<ImageView> body=new ArrayList<ImageView>();
-		List<ImageView> weapon=new ArrayList<ImageView>();
-		List<ImageView> armor=new ArrayList<ImageView>();
-		int imageIndex=0;
-		
-		for(Image image:getUnitFrame().getBodyAttackFrameList()) {
-			Group groupToAdd= new Group();
-			body.add(new ImageView(getUnitFrame().getBodyAttackFrameList().get(imageIndex)));
-			groupToAdd.getChildren().add(body.get(imageIndex));
-			if(getUnitFrame().getArmorAttackFrameList().isPresent()) {
-				armor.add(new ImageView(getUnitFrame().getArmorAttackFrameList().get().get(imageIndex)));
-				groupToAdd.getChildren().add(armor.get(imageIndex));
-			}
-			if(getUnitFrame().getWeaponAttackFrameList().isPresent()) {
-				weapon.add(new ImageView(getUnitFrame().getWeaponAttackFrameList().get().get(imageIndex)));
-				groupToAdd.getChildren().add(weapon.get(imageIndex));
-			}
-			listOfGroupOfImage.add(groupToAdd);
-			
-			imageIndex++;
-		}
-		return listOfGroupOfImage;
-	}
+
 	/**
 	 * 
 	 * @return the list of group of images that represent the unit
